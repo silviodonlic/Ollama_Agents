@@ -42,7 +42,7 @@ def run_simple_agent():
                 prompt = f"You are a simple AI assistant named {AGENT_NAME}. Give a short and concise answer to: {user_input}"
                 response = process_prompt(prompt, DEFAULT_MODEL, "SimpleAgent")
 
-                console.print(f"[bold magenta]{AGENT_NAME}: [/bold magenta]{response}")
+                # console.print(f"[bold magenta]{AGENT_NAME}: [/bold magenta]{response}")
                 logger.info(f"Agent response: {response}")
 
             except InputError as e:

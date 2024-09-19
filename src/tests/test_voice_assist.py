@@ -10,7 +10,7 @@ import tempfile
 # Add the project root to the Python path
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 
-from src.modules.voice_assist import initialize_whisper_models, listen, transcribe_audio, speak
+from src.modules.voice_assist import initialize, listen, voice_assistant, speak
 
 class TestVoiceAssist(unittest.TestCase):
 
@@ -20,7 +20,7 @@ class TestVoiceAssist(unittest.TestCase):
         mock_base_model = MagicMock()
         mock_load_model.side_effect = [mock_tiny_model, mock_base_model]
 
-        tiny_model, base_model = initialize_whisper_models()
+        tiny_model, base_model = initialize('jarvis', 'quit', 'yes')
 
         self.assertEqual(mock_load_model.call_count, 2)
         mock_load_model.assert_any_call("tiny")
@@ -63,7 +63,7 @@ class TestVoiceAssist(unittest.TestCase):
         mock_temp_file_instance.name = '/tmp/fake_audio.wav'
         mock_temp_file.return_value.__enter__.return_value = mock_temp_file_instance
 
-        result = transcribe_audio(mock_audio, mock_model)
+        result = voice_assistant._transcribe(mock_audio, mock_model)
 
         mock_temp_file.assert_called_once_with(suffix=".wav", delete=False)
         mock_temp_file_instance.write.assert_called_once_with(b'fake_audio_data')
@@ -74,7 +74,7 @@ class TestVoiceAssist(unittest.TestCase):
     def test_transcribe_audio_none(self):
         mock_model = MagicMock()
 
-        result = transcribe_audio(None, mock_model)
+        result = voice_assistant._transcribe(None, mock_model)
 
         mock_model.transcribe.assert_not_called()
         self.assertEqual(result, '')

@@ -1,6 +1,6 @@
 # Enhanced Reasoning Functions and Helpers
 
-This document details the advanced reasoning capabilities and helper functions implemented in the Ollama_Agents project.
+# This document details the advanced reasoning capabilities and helper functions implemented in the Ollama_Agents project.
 
 ## Reasoning Functions
 

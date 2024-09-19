@@ -4,12 +4,12 @@ import os
 from pathlib import Path
 
 # User and Agent configuration
-USER_NAME = os.getenv("AI_USER_NAME", "MikeBee")
-AGENT_NAME = os.getenv("AI_AGENT_NAME", "Otto")
+USER_NAME = os.getenv("AI_USER_NAME", "Mici")
+AGENT_NAME = os.getenv("AI_AGENT_NAME", "Brain")
 
 # Model configuration
-DEFAULT_MODEL = "llama3.1:latest"
-EMBEDDING_MODEL = os.getenv("AI_EMBEDDING_MODEL", "nomic-embed-text")
+DEFAULT_MODEL = "ml-i-ab-i1-iq4-xs"
+EMBEDDING_MODEL = os.getenv("AI_EMBEDDING_MODEL", "codellama:7b-code")
 
 # Memory configuration
 MEMORY_LENGTH = int(os.getenv("AI_MEMORY_LENGTH", "15"))
